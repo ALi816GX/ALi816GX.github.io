@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Leo&#39;s Blog</title>
+  
+  <subtitle>The more you learn, the more ignorant</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-10-19T18:18:04.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Leo Lin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown基本语法总结</title>
+    <link href="http://yoursite.com/2019/10/14/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/10/14/Markdown基本语法总结/</id>
+    <published>2019-10-14T15:46:25.000Z</published>
+    <updated>2019-10-19T18:18:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>概述<br>Markdown是一种纯文本的轻量级标记语言，可简洁方便的生成结构化html文档。支持mac,windows,linux等操作系统，支持导出HTML、PDF、Word、图片等多种类型文件。</p><p>语法</p><p>1.标题<br>语法：使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>2.段落格式<br>（1）字体<br>语法</p><p><em>斜体文本</em></p><p><em>斜体文本</em></p><p><strong>粗体文本</strong></p><p><strong>粗体文本</strong></p><p><strong><em>粗斜体文本</em></strong></p><p><strong><em>粗斜体文本</em></strong></p><p>显示如下：</p><p>（2）下划线／删除线<br>语法：</p><p><u>下划线</u></p><p><del>删除线</del></p><p>显示效果如下所示：</p><p>（3）脚注<br>语法：</p><p>脚注格式 [^OOCL]。</p><p>[^OOCL] 东方海外是香港联交所上市公司</p><p>显示效果如下所示：</p><p>3.列表<br>（1）有序列表<br>语法： 使用星号(*)、加号(+)或是减号(-)来表示</p><ul><li><p>第一项</p></li><li><p>第二项</p></li></ul><ul><li><p>第一项</p></li><li><p>第二项</p></li></ul><ul><li><p>第一项</p></li><li><p>第二项</p></li></ul><p>显示效果如下所示：</p><p>（2）无序列表<br>语法： 使用数字并加上 . 号来表示</p><ol><li><p>第一项 </p></li><li><p>第二项</p></li></ol><p>显示效果如下所示：</p><p>4.区块<br>语法：</p><p>（1）区块引用是在段落开头使用“ &gt; ”符号 ，然后后面紧跟一个空格：</p><blockquote><p>苹果</p></blockquote><blockquote><p>微软</p></blockquote><p>（2）嵌套：一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推退：</p><blockquote><p>最外层</p></blockquote><blockquote><blockquote><p>第一层嵌套</p></blockquote></blockquote><blockquote><blockquote><blockquote><p>第二层嵌套</p></blockquote></blockquote></blockquote><p>显示效果如下所示：</p><p>5.代码<br>语法：</p><p>(1)符号`包围</p><p><code>1+1=2</code>是否正确</p><p>(2)符号<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"></span><br><span class="line">$(document).ready(function () &#123;</span><br><span class="line"></span><br><span class="line">    alert(&apos;Hello OOCL&apos;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p><p>显示效果如下所示：</p><p>6.链接<br>语法：<a href="链接地址">链接名称</a> 或者 &lt;链接地址&gt;</p><p>这是一个链接 <a href="https://www.baidu.com/" target="_blank" rel="noopener">百度</a></p><p><a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p><p>显示效果如下所示：</p><p>7.图片<br>语法：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="图片地址" alt="alt 文件属性" title>                </div>                <div class="image-caption">alt 文件属性</div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="图片地址" alt="alt 文件属性" title="可选标题">                </div>                <div class="image-caption">可选标题</div>            </figure><p>备注：</p><p>alt：对图片的文字解释</p><p>文件属性：如PNG，IMG</p><p>“可选标题”：可有可无</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.baidu.com/img/dong_a38183314e67f1faa402cfb5bfc2f5a3.gif" alt="BAIDU GIF" title>                </div>                <div class="image-caption">BAIDU GIF</div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://www.baidu.com/img/dong_a38183314e67f1faa402cfb5bfc2f5a3.gif" alt="BAIDU GIF" title="“百度图片”">                </div>                <div class="image-caption">“百度图片”</div>            </figure><p>显示效果如下所示：</p><p>8.表格<br>语法：</p><p>格式：</p><p>|  表头  | 表头  |</p><p>|  —-  | —-  |</p><p>| 单元格  | 单元格 |</p><p>| 单元格  | 单元格 |</p><p>补充：</p><p>对齐方式</p><p>我们可以设置表格的对齐方式：</p><p>-: 设置内容和标题栏居右对齐。</p><p>:- 设置内容和标题栏居左对齐。</p><p>:-: 设置内容和标题栏居中对齐。</p><p>（1）</p><p>| 表头 | 表头 |</p><p>|  —-  | —-  |</p><p>| 单元格  | 单元格 |</p><p>| 单元格  | 单元格 |</p><p>（2）</p><p>| 左对齐 | 右对齐 | 居中对齐 |</p><p>| :—–| —-: | :—-: |</p><p>| 单元格 | 单元格 | 单元格 |</p><p>| 单元格 | 单元格 | 单元格 |</p><p>显示效果如下所示：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;概述&lt;br&gt;Markdown是一种纯文本的轻量级标记语言，可简洁方便的生成结构化html文档。支持mac,windows,linux等操作系统，支持导出HTML、PDF、Word、图片等多种类型文件。&lt;/p&gt;
+&lt;p&gt;语法&lt;/p&gt;
+&lt;p&gt;1.标题&lt;br&gt;语法：使用 # 号可表
+      
+    
+    </summary>
+    
+    
+      <category term="IT" scheme="http://yoursite.com/categories/IT/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+      <category term="Office" scheme="http://yoursite.com/tags/Office/"/>
+    
+  </entry>
+  
+</feed>
