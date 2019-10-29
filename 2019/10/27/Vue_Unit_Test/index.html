@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="Vue,Test,Jest">
-    <meta name="description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   #配置使用环境    1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue +">
+    <meta name="description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   配置使用环境 1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue + Vue">
 <meta name="keywords" content="Vue,Test,Jest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue Unit Test (vue单元测试)">
 <meta property="og:url" content="https://ali816gx.github.io/2019/10/27/Vue_Unit_Test/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   #配置使用环境    1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue +">
+<meta property="og:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   配置使用环境 1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue + Vue">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-29T15:50:41.000Z">
+<meta property="og:updated_time" content="2019-10-29T15:52:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Unit Test (vue单元测试)">
-<meta name="twitter:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   #配置使用环境    1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue +">
+<meta name="twitter:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   配置使用环境 1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue + Vue">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -162,6 +162,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置使用环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置使用环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置步骤"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">配置步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#用Jest测试单文件组件"><span class="post-toc-number">2.</span> <span class="post-toc-text">用Jest测试单文件组件</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-Vue_Unit_Test"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -182,8 +189,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>概述:<br>Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件  </p>
 <p>点击-学习官网 <a href="https://vue-test-utils.vuejs.org/zh/" target="_blank" rel="noopener">Vue unit test</a>  </p>
-<p>#配置使用环境  </p>
-<ul>
+<h1 id="配置使用环境"><a href="#配置使用环境" class="headerlink" title="配置使用环境"></a>配置使用环境</h1><ul>
 <li>1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等</li>
 <li>2 此演示项目基于之前使用 yarn 搭建的Vue + Vuex 配置成的 Simple 手脚架并修改配置<strong>转用</strong>npm 搭建webpack + Babel等</li>
 <li>3 在准备webpack 和 Babel 主要遇到的问题：  <ul>
@@ -202,9 +208,7 @@
 </ul>
 </li>
 </ul>
-<p>##配置步骤  </p>
-<p>#用Jest测试单文件组件  </p>
-
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h1 id="用Jest测试单文件组件"><a href="#用Jest测试单文件组件" class="headerlink" title="用Jest测试单文件组件"></a>用Jest测试单文件组件</h1>
         </div>
 
         <blockquote class="post-copyright">
@@ -212,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-29T15:50:41.000Z" itemprop="dateUpdated">2019-10-29 23:50:41</time>
+    Last updated: <time datetime="2019-10-29T15:52:03.000Z" itemprop="dateUpdated">2019-10-29 23:52:03</time>
 </span><br>
 
 
