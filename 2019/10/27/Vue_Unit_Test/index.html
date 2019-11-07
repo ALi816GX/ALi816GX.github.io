@@ -29,10 +29,12 @@
 <meta property="og:site_name" content="Leo&#39;s Blog">
 <meta property="og:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   配置使用环境 1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue + Vue">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-29T15:52:03.000Z">
+<meta property="og:updated_time" content="2019-11-07T17:19:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Unit Test (vue单元测试)">
 <meta name="twitter:description" content="概述:Vue Test Utils 通过将它们隔离挂载，模拟必要的输入 (prop、注入和用户事件等) 和对输出 (渲染结果、触发的自定义事件等) 的断言来测试 Vue 组件   点击-学习官网 Vue unit test   配置使用环境 1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等 2 此演示项目基于之前使用 yarn 搭建的Vue + Vue">
+    
+        <link rel="alternate" type="application/atom+xml" title="Leo&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -165,7 +167,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置使用环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置使用环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置步骤"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">配置步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#用Jest测试单文件组件"><span class="post-toc-number">2.</span> <span class="post-toc-text">用Jest测试单文件组件</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置使用环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置使用环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#项目使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">项目使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试流程"><span class="post-toc-number">3.</span> <span class="post-toc-text">测试流程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试常用的知识点"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试常用的知识点</span></a></li></ol>
         </nav>
     </aside>
 
@@ -191,24 +193,48 @@
 <p>点击-学习官网 <a href="https://vue-test-utils.vuejs.org/zh/" target="_blank" rel="noopener">Vue unit test</a>  </p>
 <h1 id="配置使用环境"><a href="#配置使用环境" class="headerlink" title="配置使用环境"></a>配置使用环境</h1><ul>
 <li>1 按官网指示:假定 安装并配置好了 webpack、vue-loader 和 Babel 等</li>
-<li>2 此演示项目基于之前使用 yarn 搭建的Vue + Vuex 配置成的 Simple 手脚架并修改配置<strong>转用</strong>npm 搭建webpack + Babel等</li>
+<li>2 此演示项目基于之前使用 yarn 搭建的Vue + Vuex 配置成的 Simple 手脚架并修改配置<br>  <strong>转用 npm</strong>  搭建webpack + Babel等</li>
 <li>3 在准备webpack 和 Babel 主要遇到的问题：  <ul>
 <li><ol>
-<li>npm run serve : webpack打包踩坑之TypeError: Cannot read property ‘bindings’ of null <a href="https://www.cnblogs.com/Joe-and-Joan/p/10335881.html" target="_blank" rel="noopener">参考</a>  </li>
+<li>npm run serve : webpack打包踩坑之TypeError: Cannot read property ‘bindings’ of null <a href="https://www.cnblogs.com/Joe-and-Joan/p/10335881.html" target="_blank" rel="noopener">参考</a> </li>
 </ol>
 </li>
 <li><ol start="2">
-<li>npm run test  :Requires Babel “^7.0.0-0”, but was loaded with “6.26.3”. If you are… <a href="http://www.pianshen.com/article/7755137420/" target="_blank" rel="noopener">参考</a>  </li>
+<li>npm run test  :Requires Babel “^7.0.0-0”, but was loaded with “6.26.3”. If you are… <a href="http://www.pianshen.com/article/7755137420/" target="_blank" rel="noopener">参考</a></li>
 </ol>
 </li>
 <li><ol start="3">
-<li>webStorm 配置 Jest 引起:<br>![jest_error PNG](source/photo/jest_error.png “Jest run 异常”)</li>
+<li>webStorm 配置 Jest 引起:  Error command “test:unit” does not exist<ul>
+<li>解决：找到Jest配置-&gt;Jest Package -&gt; 选中 node_modules/jest 目录即可</li>
+</ul>
+</li>
 </ol>
 </li>
 </ul>
 </li>
+<li>4 Vue Test Utils <a href="https://github.com/ALi816GX/Vue-Unit-Test.git" target="_blank" rel="noopener">手脚架地址</a> -&gt; branch[‘unitTest’’]</li>
 </ul>
-<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h1 id="用Jest测试单文件组件"><a href="#用Jest测试单文件组件" class="headerlink" title="用Jest测试单文件组件"></a>用Jest测试单文件组件</h1>
+<h1 id="项目使用"><a href="#项目使用" class="headerlink" title="项目使用"></a>项目使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1. npm install</span><br><span class="line">2. 项目启动：npm run serve</span><br><span class="line">3. 项目测试：npm run test 或者 jest</span><br><span class="line">4. 测试覆盖率：jest --coverage</span><br><span class="line"></span><br><span class="line">Tips：</span><br><span class="line">    1. &apos;@&apos;不识别：需要在webstorm里面webpack-&gt;config-&gt;配置指定项目文件build/alias.config.js</span><br><span class="line">    2. 测试文件中Jest方法有unresolved..等提醒：需在webstorm配置-&gt;javascript-&gt;lib-&gt;download Jest-&gt;选中 @type/jest</span><br><span class="line">    3. &apos;配置jest&apos;： edit run configuration -&gt; + Jest -&gt;指定Jest文件路径和工程路径</span><br><span class="line">Question:</span><br><span class="line">    该项目在linux下正常运行，在2018年webstorm版本正常跑Jest单测</span><br><span class="line">    但在2019版本jest 在测试文件中，没有 run icon 单测按钮，bug还未解决，猜测源于项目jest配置</span><br></pre></td></tr></table></figure>
+
+<h1 id="测试流程"><a href="#测试流程" class="headerlink" title="测试流程"></a>测试流程</h1><p>总的来说：</p>
+<ol>
+<li>组件是否存在</li>
+<li>组件的值是否正确</li>
+<li>组件触发是否正常</li>
+<li>组件事件引起的数据更改是否正确</li>
+<li>如何测试store (getters,mutations,actions)</li>
+</ol>
+<h1 id="测试常用的知识点"><a href="#测试常用的知识点" class="headerlink" title="测试常用的知识点"></a>测试常用的知识点</h1><ul>
+<li>wrapper: 是一个挂在组件或Vnode的包裹器（Vue test utils 的核心工具）  </li>
+<li>localVue： 创建的一个 Vue 的本地拷贝，防止元素Vue组件被污染</li>
+<li>mount：创建一个包含被挂载和渲染的 Vue 组件的 Wrapper.</li>
+<li>find ：返回匹配选择器的第一个DOM节点或 Vue 组件的 Wrapper，支持标签选择和样式选择</li>
+<li>exist: 断言 Wrapper 或 WrapperArray 是否存在。</li>
+<li>stubs:将子组件存根,一般在测试不关注子组件的属性和值时使用</li>
+<li>验证测试v-model,event(trigger),data,prop,emmit,赋值(setValue)，jest.fn,</li>
+<li>技巧：通过前端调试，找到css去找到wrapper，或者debug，将所找的路径打印html()</li>
+</ul>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -216,7 +242,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-29T15:52:03.000Z" itemprop="dateUpdated">2019-10-29 23:52:03</time>
+    Last updated: <time datetime="2019-11-07T17:19:36.000Z" itemprop="dateUpdated">2019-11-08 01:19:36</time>
 </span><br>
 
 
@@ -370,6 +396,8 @@
         
 
         <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
             <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
